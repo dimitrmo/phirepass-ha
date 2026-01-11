@@ -9,13 +9,12 @@ RUN apt-get update \
 	 libstdc++6 \
  && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app
-
-COPY rootfs /app
+COPY rootfs /
 COPY --from=binary /app/daemon /app/daemon
-COPY run.sh /app/run.sh
 
 RUN chmod +x /app/run.sh
+
+WORKDIR /app
 
 ENV RUST_LOG=info
 

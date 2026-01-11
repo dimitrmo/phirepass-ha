@@ -1,12 +1,10 @@
 .PHONY: help build run stop clean push logs shell test
 
 # Variables
-ADDON_NAME := phirepass
-DOCKER_REGISTRY := ghcr.io
-DOCKER_USERNAME := $(shell git config user.name | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
-IMAGE_NAME := $(DOCKER_REGISTRY)/$(DOCKER_USERNAME)/$(ADDON_NAME)-ha
-VERSION := $(shell cat addon.yaml | grep "^version:" | awk '{print $$2}')
-CONTAINER_NAME := phirepass-addon
+ADDON_NAME := phirepass-ha
+DOCKER_USERNAME := dimitrmo
+IMAGE_NAME := $(DOCKER_USERNAME)/$(ADDON_NAME)
+CONTAINER_NAME := phirepass-ha
 
 help:
 	@echo "PhirePass Home Assistant Addon - Makefile"
@@ -24,18 +22,19 @@ help:
 	@echo ""
 
 build:
-	@echo "Building Docker image: $(IMAGE_NAME):$(VERSION)"
-	docker build -t $(IMAGE_NAME):$(VERSION) .
-	docker tag $(IMAGE_NAME):$(VERSION) $(IMAGE_NAME):latest
-	@echo "✓ Build complete"
+	@echo "Building Docker image: $(IMAGE_NAME):latest"
+	cd phirepass-daemon-ha && \
+	    docker build -t $(IMAGE_NAME):latest .
+	    @echo "✓ Build complete"
 
 run: build
 	@echo "Running container: $(CONTAINER_NAME)"
-	docker run -it --rm \
-		--name $(CONTAINER_NAME) \
-		-p 8080:8080 \
-		-v $(PWD)/data:/data \
-		$(IMAGE_NAME):$(VERSION)
+	cd phirepass-daemon-ha && \
+		docker run -it --rm \
+            --network=host \
+            --name $(CONTAINER_NAME) \
+            -p 18080:8080 \
+            $(IMAGE_NAME):latest
 
 stop:
 	@echo "Stopping container: $(CONTAINER_NAME)"
