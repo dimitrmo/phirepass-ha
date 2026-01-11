@@ -3,7 +3,9 @@ set -e
 
 echo "Starting phirepass daemon addon..."
 
-PORT=${PORT:-8080}
+PORT=${PORT:-8085}
+
+env
 
 echo "Running on port: $PORT"
 

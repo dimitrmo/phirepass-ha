@@ -8,7 +8,7 @@ arch:
 startup: application
 boot: auto
 ports:
-    8080/tcp: 8080
+    8080/tcp: 8084
 ports_description:
     8080/tcp: Web interface
 environment:
@@ -16,7 +16,7 @@ environment:
 schema:
     port: int?
 options:
-    port: 8080
+    port: 8083
 required:
     - port
 homeassistant_api: true
