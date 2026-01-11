@@ -3,13 +3,16 @@ set -e
 
 echo "Starting phirepass daemon addon..."
 
-env
+cat /data/options.json
 
-echo "Configured port: $PORT"
+# Read port from Home Assistant options
+if [ -f /data/options.json ]; then
+    PORT=$(jq -r '.port // 8080' /data/options.json)
+else
+    PORT=${PORT:-8080}
+fi
 
-PORT=${PORT:-8085}
-
-env
+export PORT
 
 echo "Running on port: $PORT"
 
