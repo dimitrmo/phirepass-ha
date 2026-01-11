@@ -10,6 +10,8 @@ if [ -f /data/options.json ]; then
     done < <(jq -r 'to_entries | .[] | "\(.key)=\(.value)"' /data/options.json)
 fi
 
+env
+
 echo "Running daemon..."
 
 exec /app/daemon start
