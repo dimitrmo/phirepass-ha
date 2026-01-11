@@ -15,19 +15,20 @@ if [ ! -f /etc/ssh/ssh_host_rsa_key ]; then
 fi
 
 # Configure SSH for passwordless login
+# Reference: https://github.com/hassio-addons/addon-ssh/blob/v22.0.3/ssh/rootfs/etc/ssh/sshd_config
 echo "Configuring SSH for passwordless root access..."
-sed -i 's/^#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-sed -i 's/^PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-sed -i 's/^#PermitEmptyPasswords no/PermitEmptyPasswords yes/' /etc/ssh/sshd_config
-sed -i 's/^PermitEmptyPasswords no/PermitEmptyPasswords yes/' /etc/ssh/sshd_config
-sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
+sed -i 's/^#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+sed -i 's/^PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+sed -i 's/^#PermitEmptyPasswords.*/PermitEmptyPasswords yes/' /etc/ssh/sshd_config
+sed -i 's/^PermitEmptyPasswords.*/PermitEmptyPasswords yes/' /etc/ssh/sshd_config
+sed -i 's/^#UsePAM.*/UsePAM no/' /etc/ssh/sshd_config
+sed -i 's/^UsePAM.*/UsePAM no/' /etc/ssh/sshd_config
 
 # Set root password to empty
 passwd -d root 2>/dev/null || true
 
-# Create authorized_keys directory for root
-mkdir -p /root/.ssh
-chmod 700 /root/.ssh
+# Note: authorized_keys setup is not required for passwordless login
 
 # Start SSH server in background
 echo "Starting SSH server on ${SSH_HOST}:${SSH_PORT}..."
