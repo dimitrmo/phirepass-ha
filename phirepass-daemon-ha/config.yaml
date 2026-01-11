@@ -20,12 +20,12 @@ options:
     port: 8080
 required:
     - port
-homeassistant_api: false
+homeassistant_api: true
 privileged: []
 full_access: []
 devices: []
 realms:
     - api
-host_network: false
-host_dbus: false
-tmpfs: null
+host_network: true
+host_dbus: true
+tmpfs: true
