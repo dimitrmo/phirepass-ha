@@ -1,6 +1,6 @@
 name: Phirepass daemon
 description: Phirepass daemon addon for Home Assistant
-version: 1.0.1
+version: 1.0.2
 slug: phirepass-daemon-ha
 arch:
   - aarch64
@@ -8,7 +8,7 @@ arch:
 startup: application
 boot: auto
 ports:
-    8080/tcp: 8084
+    8080/tcp: 8080
 ports_description:
     8080/tcp: Web interface
 environment:
@@ -16,7 +16,7 @@ environment:
 schema:
     port: int?
 options:
-    port: 8083
+    port: 8080
 required:
     - port
 homeassistant_api: true
