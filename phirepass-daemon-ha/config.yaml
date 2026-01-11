@@ -8,7 +8,7 @@ arch:
 startup: application
 boot: auto
 schema:
-    APP_MODE: match(development|production)?
+    APP_MODE: match(dev|development|prod|production)?
     HOST: str?
     PORT: int?
     SERVER_HOST: str?
