@@ -1,0 +1,4 @@
+# https://developers.home-assistant.io/docs/add-ons/repository#repository-configuration
+name: Phirepass home-assistant add-on repository
+url: 'https://github.com/dimitrmo/phirepass-ha'
+maintainer: Dimitris Mouratidis <dmouratidis153@gmail.com>

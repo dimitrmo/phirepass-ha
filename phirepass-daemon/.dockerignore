@@ -1,0 +1,8 @@
+.devcontainer/
+.github/
+target/
+Makefile
+*.md
+.git
+.vscode/
+.idea/

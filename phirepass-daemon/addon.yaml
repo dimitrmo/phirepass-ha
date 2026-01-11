@@ -1,0 +1,31 @@
+name: PhirePass
+description: PhirePass addon for Home Assistant
+version: 1.0.0
+slug: phirepass
+image: dimitrmok/phirepass-ha
+arch:
+    - amd64
+    - arm64
+startup: application
+boot: auto
+ports:
+    8080/tcp: 8080
+ports_description:
+    8080/tcp: Web interface
+environment:
+    PORT: "{{ options.port }}"
+schema:
+    port: int?
+options:
+    port: 8080
+required:
+    - port
+homeassistant_api: false
+privileged: []
+full_access: []
+devices: []
+realms:
+    - api
+host_network: false
+host_dbus: false
+tmpfs: null

@@ -1,0 +1,7 @@
+{
+    "port": {
+        "name": "Port",
+        "description": "Port number for PhirePass web interface",
+        "default": 8080
+    }
+}
