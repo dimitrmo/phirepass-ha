@@ -1,6 +1,6 @@
 name: Phirepass daemon
 description: Phirepass daemon addon for Home Assistant
-version: 1.0.10-1
+version: 1.0.10-2
 slug: phirepass-daemon-ha
 arch:
   - aarch64
@@ -8,6 +8,10 @@ arch:
 startup: application
 boot: auto
 schema:
+    APP_MODE:
+      select:
+        - development
+        - production
     HOST: str?
     PORT: int?
     SERVER_HOST: str?
@@ -15,6 +19,7 @@ schema:
     SSH_HOST: str?
     SSH_PORT: int?
 options:
+    APP_MODE: production
     HOST: 0.0.0.0
     PORT: 18080
     SERVER_HOST: phirepass.local
