@@ -5,9 +5,7 @@ echo "Starting phirepass daemon addon..."
 
 # Export all options from the JSON file as environment variables
 if [ -f /data/options.json ]; then
-    while IFS= read -r key value; do
-        export "$key=$value"
-    done < <(jq -r 'to_entries | .[] | "\(.key)=\(.value)"' /data/options.json)
+    eval "$(jq -r 'to_entries | .[] | "export \(.key)=\(.value | @json)"' /data/options.json)"
 fi
 
 env
