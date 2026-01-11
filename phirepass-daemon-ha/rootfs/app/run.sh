@@ -8,8 +8,6 @@ if [ -f /data/options.json ]; then
     eval "$(jq -r 'to_entries | .[] | "export \(.key)=\(.value | @json)"' /data/options.json)"
 fi
 
-env
-
-echo "Running daemon..."
+echo "Running phirepass daemon..."
 
 exec /app/daemon start
