@@ -4,8 +4,8 @@ version: 1.0.0
 slug: phirepass-daemon-ha
 image: dimitrmok/phirepass-ha
 arch:
-    - amd64
-    - arm64
+  - aarch64
+  - amd64
 startup: application
 boot: auto
 ports:
