@@ -3,10 +3,17 @@ FROM dimitrmok/phirepass-daemon:latest AS binary
 # Stage 2: runtime image (glibc-based for compatibility)
 FROM debian:trixie-slim
 
-RUN apt-get update \
- && apt-get install -y --no-install-recommends \
-	 ca-certificates \
-	 libstdc++6 \
+RUN apt-get update && apt-get install -y \
+    pkg-config \
+    libssl-dev \
+    gcc-aarch64-linux-gnu \
+    libc6-dev-arm64-cross \
+    build-essential \
+    git \
+    make \
+    autoconf \
+    curl \
+    jq \
  && rm -rf /var/lib/apt/lists/*
 
 COPY rootfs /
