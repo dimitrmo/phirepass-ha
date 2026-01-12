@@ -1,4 +1,4 @@
-FROM dimitrmok/phirepass-daemon:0.1.81 AS binary
+FROM dimitrmok/phirepass-daemon:0.1.82 AS binary
 
 # Stage 2: runtime image (glibc-based for compatibility)
 FROM debian:trixie-slim
