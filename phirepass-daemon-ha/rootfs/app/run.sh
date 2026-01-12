@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+# Ensure UTF-8 locale is set
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 echo "Starting phirepass daemon addon..."
 
 # Export all options from the JSON file as environment variables
