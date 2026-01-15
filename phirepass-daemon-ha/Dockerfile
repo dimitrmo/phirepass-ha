@@ -1,4 +1,4 @@
-FROM dimitrmok/phirepass-daemon:0.1.86 AS binary
+FROM dimitrmok/phirepass-daemon:0.1.87 AS binary
 
 # Stage 2: runtime image (glibc-based for compatibility)
 FROM debian:trixie-slim
@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
     libc6-dev-arm64-cross \
     build-essential \
     git \
+    vim \
     make \
     autoconf \
     curl \
@@ -33,6 +34,8 @@ RUN sed -i 's/^# *en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
 
 ENV LANG=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8
+
+RUN echo "alias btop='btop --utf-force'" >> /root/.bashrc
 
 ENV RUST_LOG=info
 
