@@ -7,7 +7,7 @@ export RUST_LOG=info
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-echo "Starting phirepass daemon addon..."
+echo "Starting phirepass agent addon..."
 
 # Export all options from the JSON file as environment variables
 if [ -f /data/options.json ]; then
@@ -40,8 +40,8 @@ passwd -d root 2>/dev/null || true
 echo "Starting SSH server on ${SSH_HOST}:${SSH_PORT}..."
 /usr/sbin/sshd -D &
 
-echo "Running phirepass daemon..."
+echo "Running phirepass agent..."
 
-exec echo $PAT_TOKEN | /app/daemon login --from-stdin - &&
+exec echo $PAT_TOKEN | /app/agent login --from-stdin - &&
 
-exec /app/daemon start
+exec /app/agent start
