@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+export RUST_LOG=info
+
 # Ensure UTF-8 locale is set
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -39,5 +41,7 @@ echo "Starting SSH server on ${SSH_HOST}:${SSH_PORT}..."
 /usr/sbin/sshd -D &
 
 echo "Running phirepass daemon..."
+
+exec echo $PAT_TOKEN | /app/daemon login --from-stdin - &&
 
 exec /app/daemon start
