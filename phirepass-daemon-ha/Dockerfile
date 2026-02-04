@@ -24,7 +24,7 @@ RUN apt-get update && apt-get install -y \
  && mkdir -p /var/run/sshd
 
 COPY rootfs /
-COPY --from=binary /app/daemon /app/daemon
+COPY --from=binary /app/agent /app/agent
 
 RUN chmod +x /app/run.sh
 
