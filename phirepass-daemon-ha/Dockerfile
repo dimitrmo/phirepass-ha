@@ -1,4 +1,4 @@
-FROM dimitrmok/phirepass-agent:0.1.106 AS binary
+FROM dimitrmok/phirepass-agent:0.1.110 AS binary
 
 # Stage 2: runtime image (glibc-based for compatibility)
 FROM debian:trixie-slim
