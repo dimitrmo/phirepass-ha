@@ -40,7 +40,7 @@ echo "Starting SSH server on ${SSH_HOST}:${SSH_PORT}..."
 /usr/sbin/sshd -D &
 
 echo "Running phirepass agent..."
-exec /app/agent logout --server-host $SERVER_HOST --server-port $SERVER_PORT
+
 echo $PAT_TOKEN | /app/agent login --from-stdin --server-host $SERVER_HOST --server-port $SERVER_PORT
 
 exec /app/agent start
