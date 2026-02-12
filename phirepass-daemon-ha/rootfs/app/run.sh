@@ -1,12 +1,5 @@
 #!/bin/bash
 
-export RUST_LOG=info
-export XDG_DATA_HOME=/share
-
-# Ensure UTF-8 locale is set
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-
 echo "Starting phirepass agent addon..."
 
 # Export all options from the JSON file as environment variables
