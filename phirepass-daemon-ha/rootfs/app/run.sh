@@ -41,6 +41,8 @@ echo "Starting SSH server on ${SSH_HOST}:${SSH_PORT}..."
 
 echo "Running phirepass agent..."
 
+env
+
 echo $PAT_TOKEN | /app/agent login --from-stdin --server-host $SERVER_HOST --server-port $SERVER_PORT
 
 exec /app/agent start
