@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export RUST_LOG=info
+export XDG_DATA_HOME=$HOME/share
 
 # Ensure UTF-8 locale is set
 export LANG=en_US.UTF-8
