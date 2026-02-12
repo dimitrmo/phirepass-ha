@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export RUST_LOG=info
-export XDG_DATA_HOME=$HOME/share
+export XDG_DATA_HOME=/share
 
 # Ensure UTF-8 locale is set
 export LANG=en_US.UTF-8
@@ -45,6 +45,7 @@ echo "Running phirepass agent..."
 env
 pwd
 ls -lah
+ls -lah root
 ls -lah share
 
 echo $PAT_TOKEN | /app/agent login --from-stdin --server-host $SERVER_HOST --server-port $SERVER_PORT
