@@ -1,4 +1,4 @@
-FROM dimitrmok/phirepass-agent:0.1.119 AS binary
+FROM dimitrmok/phirepass-agent:0.1.121 AS binary
 
 # Stage 2: runtime image (glibc-based for compatibility)
 FROM debian:trixie-slim
@@ -11,12 +11,17 @@ RUN apt-get update && apt-get install -y \
     btop \
     locales \
     gcc-aarch64-linux-gnu \
+    g++-aarch64-linux-gnu \
     libc6-dev-arm64-cross \
     build-essential \
     git \
     vim \
     make \
+    cmake \
+    perl \
+    golang \
     autoconf \
+    ninja-build \
     curl \
     jq \
     sudo \
