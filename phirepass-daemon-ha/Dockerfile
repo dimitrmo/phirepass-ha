@@ -1,6 +1,5 @@
-FROM dimitrmok/phirepass-agent:0.1.122 AS binary
+FROM dimitrmok/phirepass-agent:0.1.130 AS binary
 
-# Stage 2: runtime image (glibc-based for compatibility)
 FROM debian:trixie-slim
 
 RUN apt-get update && apt-get install -y \
@@ -34,8 +33,8 @@ COPY --from=binary /app/agent /app/agent
 RUN chmod +x /app/run.sh
 
 RUN sed -i 's/^# *en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
- && locale-gen \
- && update-locale LANG=en_US.UTF-8
+    && locale-gen \
+    && update-locale LANG=en_US.UTF-8
 
 ENV LANG=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8
