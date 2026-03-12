@@ -1,13 +1,12 @@
 #!/bin/bash
+set -e
 
 echo "Starting phirepass agent addon..."
 
-# Export all options from the JSON file as environment variables
 if [ -f /data/options.json ]; then
     eval "$(jq -r 'to_entries | .[] | "export \(.key)=\(.value | @json)"' /data/options.json)"
 fi
 
-# Generate SSH host keys if they don't exist
 if [ ! -f /etc/ssh/ssh_host_rsa_key ]; then
     echo "Generating SSH host keys..."
     ssh-keygen -A
