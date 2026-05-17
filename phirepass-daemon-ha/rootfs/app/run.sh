@@ -38,4 +38,4 @@ else
     echo "PAT_TOKEN is empty; please provide a token for agent to login."
 fi
 
-exec /app/agent start --settings-from-file /app/settings.json
+exec /app/agent start
