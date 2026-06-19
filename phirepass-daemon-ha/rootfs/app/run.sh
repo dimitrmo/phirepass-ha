@@ -30,6 +30,9 @@ echo 'root:root' | chpasswd
 echo "Starting SSH server on ${SSH_HOST}:${SSH_PORT}..."
 /usr/sbin/sshd -D &
 
+echo "Starting nginx on port 8081..."
+nginx -g "daemon off;" &
+
 echo "Running phirepass agent..."
 
 if [ -n "${PAT_TOKEN}" ]; then

@@ -4,6 +4,10 @@ FROM dimitrmok/phirepass-agent:0.1.271 AS binary
 
 FROM dimitrmok/phirepass-base:0.1.271 AS base
 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends nginx && \
+    rm -rf /var/lib/apt/lists/*
+
 COPY rootfs /
 COPY --from=binary /app/agent /app/agent
 
@@ -18,5 +22,6 @@ RUN echo "alias btop='btop --utf-force'" >> /root/.bashrc
 ENV RUST_LOG=info
 
 EXPOSE 8080
+EXPOSE 8081
 
 CMD [ "/app/run.sh" ]
