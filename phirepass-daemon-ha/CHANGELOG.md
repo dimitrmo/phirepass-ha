@@ -2,6 +2,10 @@
 
 All notable changes to this add-on are documented here.
 
+## 1.0.84-283
+
+- WebSocket support for http proxy
+
 ## 1.0.91-271
 
 - Add nginx, serving a static placeholder page on port 8081.
